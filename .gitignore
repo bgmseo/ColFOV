@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+.venv/
+outputs/
+
+# No sample clinical media is distributed with this repository.
+# Users supply their own files via --image / --video.
+*.mp4
+*.avi
+*.mov
+examples/*.png
+examples/*.jpg
+examples/*.jpeg

@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "colfov"
+version = "0.1.0"
+description = "Semantic-guided four-class segmentation of endoscopic frames, with derived inner-FOV, full-FOV and causal session PiP geometry"
+requires-python = ">=3.10"
+dependencies = [
+  "torch>=2.0",
+  "numpy>=1.24",
+  "opencv-python-headless>=4.8",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

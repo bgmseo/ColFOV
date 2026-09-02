@@ -1,0 +1,2496 @@
+{
+  "what": "deterministic synthetic contract fixture for the causal state-transition rules; contains no real recording data",
+  "frame_width": 1280,
+  "frame_height": 720,
+  "monitor_interval_sec": 0.2,
+  "n_locks": 2,
+  "n_unlocks": 1,
+  "final_epoch": 1,
+  "records": [
+    {
+      "timestamp_sec": 0.0,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 0.2,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 0.4,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 0.6,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 0.8,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 1.0,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 1.2,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 1.4,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 1.6,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 1.8,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 2.0,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 2.2,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 2.4,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 2.6,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 2.8,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 3.0,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": "lock",
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 3.2,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 3.4,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 3.6,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 3.8,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 4.0,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 4.2,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 4.4,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 4.6,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 4.8,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 5.0,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 5.2,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 5.4,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 5.6,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 5.8,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 6.0,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 6.2,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 6.4,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 6.6,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 6.8,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 7.0,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 7.2,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 7.4,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 7.6,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 7.8,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 8.0,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 8.2,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 8.4,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 8.6,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 8.8,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 9.0,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 9.2,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 9.4,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 9.6,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 9.8,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 10.0,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 10.2,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 10.4,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 10.6,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 10.8,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 11.0,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 11.2,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 11.4,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 11.6,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 11.8,
+      "observation_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 12.0,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 12.2,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 12.4,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 12.6,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 12.8,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 13.0,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 13.2,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 13.4,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 13.6,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 13.8,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 14.0,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 14.2,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 14.4,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 14.6,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 14.8,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 15.0,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 15.2,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 15.4,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 15.6,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 15.8,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 16.0,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 16.2,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 16.4,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 16.6,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 16.8,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 17.0,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 17.2,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 17.4,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 17.6,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 17.8,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 18.0,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 18.2,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 18.4,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 18.6,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 18.8,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 19.0,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 19.2,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 19.4,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 19.6,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 19.8,
+      "observation_box": null,
+      "active_session_pip_box": null,
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "pip_ttl_expired"
+    },
+    {
+      "timestamp_sec": 20.0,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 20.2,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 20.4,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 20.6,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 20.8,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        900,
+        460,
+        1100,
+        610
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 0,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 21.0,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 1,
+      "pip_event": "unlock",
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 21.2,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 21.4,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 21.6,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 21.8,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 22.0,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 22.2,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 22.4,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 22.6,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 22.8,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 23.0,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 23.2,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 23.4,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 23.6,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 23.8,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 24.0,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": null,
+      "pip_state": "unlocked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "pip_session_box_unavailable"
+    },
+    {
+      "timestamp_sec": 24.2,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": "relock",
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 24.4,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 24.6,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 24.8,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 25.0,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 25.2,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 25.4,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 25.6,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 25.8,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 26.0,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 26.2,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 26.4,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 26.6,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 26.8,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 27.0,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 27.2,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 27.4,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 27.6,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 27.8,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 28.0,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 28.2,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 28.4,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 28.6,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 28.8,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 29.0,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 29.2,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 29.4,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 29.6,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 29.8,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 30.0,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 30.2,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 30.4,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 30.6,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 30.8,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 31.0,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 31.2,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 31.4,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 31.6,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    },
+    {
+      "timestamp_sec": 31.8,
+      "observation_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "active_session_pip_box": [
+        200,
+        120,
+        400,
+        270
+      ],
+      "pip_state": "locked",
+      "pip_epoch": 1,
+      "pip_event": null,
+      "pip_reason": "ok"
+    }
+  ]
+}

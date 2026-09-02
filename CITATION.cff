@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this software or the released model weights, please cite the paper below."
+title: "ColFOV: semantic-guided four-class endoscopic frame segmentation with derived FOV and session PiP geometry"
+abstract: >-
+  ColFOV segments endoscopic frames into four classes (background UI, valid FOV tissue,
+  black corner, popup overlay) and derives three geometry products from those masks: an
+  inner-FOV box, a full-FOV box, and a conditional, causal session-level
+  picture-in-picture box. The network outputs only the segmentation mask; all bounding
+  boxes are derived geometry and abstain fail-closed when their evidence conditions are
+  not met.
+type: software
+version: "0.1.0"
+license-url: "LICENSE"     # All Rights Reserved; not an open-source licence
+repository-code: "<repository-url>"
+authors:
+  - family-names: "Seo"
+    given-names: "Bo Geum"
+    email: "bgm.seo@snu.ac.kr"
+    affiliation: "Seoul National University"
+keywords:
+  - colonoscopy
+  - endoscopy
+  - semantic segmentation
+  - field of view
+  - picture-in-picture
+# The accompanying manuscript is not yet submitted; citation details will be added
+# on publication.
