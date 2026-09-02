@@ -1,8 +1,8 @@
 # Figure assets — rights
 
-The figures in this directory are **All Rights Reserved** (see the repository
-`LICENSE`). They are reproduced here solely in connection with the accompanying
-publication, for scientific transparency.
+The figures in this directory are reproduced solely in connection with the
+accompanying publication, for scientific transparency. Repository-wide licensing terms
+are not settled yet and will be added when the manuscript is submitted.
 
 - No permission is granted to extract, reuse, redistribute or modify these figures or
   any panel within them.
@@ -15,5 +15,4 @@ publication, for scientific transparency.
   redistributable. Its raw media, individual frames, source paths and recording
   identifiers are not published anywhere in this repository.
 
-Any other use requires prior written permission from the copyright holder
-(bgm.seo@seemedi.com, bgm.seo@snu.ac.kr).
+Questions about reuse: bgm.seo@seemedi.com, bgm.seo@snu.ac.kr

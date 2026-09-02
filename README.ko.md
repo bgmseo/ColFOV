@@ -9,11 +9,8 @@
 
 ColFOV는 조직인 부분을 찾아, 잘라 쓸 수 있는 사각형을 돌려줍니다.
 
-코드와 model weights는 과학적 투명성을 위해 공개되어 있습니다. **오픈소스가 아닙니다** —
-[라이선스](#라이선스) 참조.
-
-아래 명령은 공개된 인터페이스를 문서화한 것입니다. 저장소 라이선스는 코드나 weights의
-실행·사용 권한을 부여하지 않으며, 저작권자의 사전 서면 허가가 필요합니다.
+코드와 model weights는 과학적 투명성을 위해 공개합니다. 라이선스 조건은 아직 정하지
+않았으며, 원고 투고 시점에 맞춰 추가할 예정입니다.
 
 ![ColFOV workflow](assets/fig1_workflow.png)
 
@@ -250,11 +247,11 @@ TinyUNet, 4 classes, base channels 8, 487,316 파라미터. 입력 512 × 384, l
 포함되어 있지 않습니다. 연구에 사용된 데이터셋은 각 관리 주체가 각자의 조건으로
 배포합니다 — 공식 출처에서 직접 받고 그 조건을 따르세요:
 
-| 데이터셋 | 공식 출처 |
+| 데이터셋 | 데이터셋 논문 (data-availability 항목을 따라 내려받으세요) |
 |---|---|
-| REAL-Colon | `<official dataset page>` |
-| C3VDv2 | `<official dataset page>` |
-| CAS-Colon | `<official dataset page>` |
+| REAL-Colon | https://doi.org/10.1038/s41597-024-03359-0 |
+| C3VDv2 | https://doi.org/10.1038/s41597-026-07471-1 |
+| CAS-Colon | https://doi.org/10.1038/s41597-025-05588-3 |
 
 학습 자료의 일부는 공개 재배포가 불가능한 병원 데이터이며 여기에 링크하지 않습니다.
 
@@ -276,16 +273,6 @@ state-transition 계약, fail-closed 디코딩, 그리고 CLI 예제가 export�
   확증 검증이 아닙니다. 보고된 수치는 논문에 있습니다.
 - 개발 자료 밖의 장비·해상도·오버레이 양식에서의 동작은 알 수 없습니다.
 - Abstention은 설계된 동작입니다. `null` 박스는 의도된 fail-closed 결과입니다.
-
-## 라이선스
-
-저장소의 모든 콘텐츠는 **All Rights Reserved**입니다 — 소스 코드, model weights, 설정
-파일, 문서, 테스트 fixture, figure 모두 포함합니다. 공개되어 있다는 사실이 사용·실행·수정·
-재배포·2차적 저작물 작성을 허용하지 않습니다. 저작권자의 서면 허가가 필요합니다 —
-`LICENSE` 참조.
-
-Figure asset도 동일한 조건이며, 거기에 합성된 임상 프레임은 라이선스되지도, 별도로
-배포되지도 않습니다 (`assets/RIGHTS.md`).
 
 ## 인용
 

@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you receive written permission to use this software or the released model weights, please cite the accompanying paper once its citation is available."
+message: "If you use this software or the released model weights, please cite the accompanying paper once its citation is available."
 title: "ColFOV: semantic-guided four-class endoscopic frame segmentation with derived FOV and session PiP geometry"
 abstract: >-
   ColFOV segments endoscopic frames into four classes (background UI, valid FOV tissue,
@@ -10,7 +10,6 @@ abstract: >-
   not met.
 type: software
 version: "0.1.0"
-license-url: "https://github.com/bgmseo/ColFOV/blob/main/LICENSE"
 repository-code: "https://github.com/bgmseo/ColFOV"
 authors:
   - family-names: "Seo"

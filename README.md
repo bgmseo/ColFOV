@@ -9,12 +9,8 @@ classification — and a large share of the pixels are not tissue at all.
 
 ColFOV finds the part that is, and gives you rectangles you can crop with.
 
-Code and model weights are publicly available for scientific transparency. This is
-**not** open-source software — see [License](#license).
-
-The commands below document the released interface. The repository license does not
-grant permission to execute or otherwise use the code or weights; prior written
-permission from the copyright holder is required.
+Code and model weights are published here for scientific transparency. Licensing terms
+are not settled yet and will be added when the manuscript is submitted.
 
 ![ColFOV workflow](assets/fig1_workflow.png)
 
@@ -259,11 +255,11 @@ cannot be loaded into a plausible-looking wrong model.
 Not included. The datasets used in the study are distributed by their maintainers under
 their own terms — obtain them from the official sources and comply with those terms:
 
-| dataset | official source |
+| dataset | dataset paper (follow its data-availability statement) |
 |---|---|
-| REAL-Colon | `<official dataset page>` |
-| C3VDv2 | `<official dataset page>` |
-| CAS-Colon | `<official dataset page>` |
+| REAL-Colon | https://doi.org/10.1038/s41597-024-03359-0 |
+| C3VDv2 | https://doi.org/10.1038/s41597-026-07471-1 |
+| CAS-Colon | https://doi.org/10.1038/s41597-025-05588-3 |
 
 Part of the training material is a hospital dataset that is not publicly
 redistributable and is not linked here.
@@ -289,17 +285,6 @@ clinical performance.
 - Behaviour on equipment, resolutions or overlay styles outside the development
   material is unknown.
 - Abstention is by design. A `null` box is the intended fail-closed outcome.
-
-## License
-
-All repository content is **All Rights Reserved** — source code, model weights,
-configuration files, documentation, test fixtures and figures alike. Public
-availability does not grant permission to use, execute, modify, redistribute or create
-derivative works. Written permission from the copyright holder is required; see
-`LICENSE`.
-
-Figure assets carry the same terms, and the clinical frames composited into them are
-not licensed or separately distributed (`assets/RIGHTS.md`).
 
 ## Citation
 
