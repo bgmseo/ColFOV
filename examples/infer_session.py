@@ -52,10 +52,12 @@ def main() -> int:
             "time-dependent quantity. It must not be applied retrospectively to "
             "earlier timestamps. Use monitor_records.jsonl for per-observation "
             "boxes."),
-        "n_pip_locks": r.n_pip_locks,
-        "n_pip_unlocks": r.n_pip_unlocks,
-        "n_pip_epochs": r.n_pip_epochs,
+        "final_pip_epoch": r.final_pip_epoch,
+        "n_pip_epoch_rotations": r.n_pip_epoch_rotations,
+        "n_pip_lock_events": r.n_pip_lock_events,
+        "n_pip_unlock_events": r.n_pip_unlock_events,
         "monitor_hz": r.monitor_hz,
+        "effective_monitor_hz": r.effective_monitor_hz,
         "n_calibration_frames_requested": calib["n_requested"],
         "n_calibration_frames_admissible": calib["n_admissible"],
         "min_valid_frame_frac": calib["min_valid_frame_frac"],

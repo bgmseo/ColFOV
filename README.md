@@ -1,11 +1,17 @@
 # ColFOV
 
+[한국어](README.ko.md)
+
 Semantic-guided four-class segmentation of endoscopic frames, and the three geometry
 products derived from it: an inner-FOV box, a full-FOV box, and a conditional
 session-level picture-in-picture (PiP) box.
 
 Code and model weights are publicly available for scientific transparency. This is
 **not** open-source software — see [License](#license).
+
+The commands below document the released interface. The repository license does not
+grant permission to execute or otherwise use the code or weights; prior written
+permission from the copyright holder is required.
 
 ![ColFOV workflow](assets/fig1_workflow.png)
 
@@ -27,7 +33,8 @@ mask    [H, W], values in {0, 1, 2, 3}
 
 ![Label examples](assets/sup_fig3_label_pairs.png)
 
-Both figures are flattened reproductions of figures from the accompanying publication.
+Both figures are flattened reproductions of figures prepared for the accompanying
+manuscript.
 They are illustrations, not data: see `assets/RIGHTS.md` and `assets/PROVENANCE.md`.
 
 **All three bounding boxes are derived geometry, not network outputs.** They are
@@ -39,8 +46,9 @@ computed from masks by ordinary geometry, and each can be unavailable:
 | `full_fov_box` | the same 24 frames, stable class-1-or-2 support | same condition |
 | `active_session_pip_box` | causal monitoring of the whole recording | no lock, evidence insufficient, TTL expired, or stability gate not passed |
 
-All three keys always exist. `null` is a **fail-closed abstention** carrying a reason
-code — never an error, and never replaced by a fallback box.
+All three keys always exist in the session output. `null` is a **fail-closed
+abstention** carrying a reason code — never an error, and never replaced by a fallback
+box.
 
 ### `active_session_pip_box` is time-dependent
 
@@ -72,8 +80,8 @@ plausible-looking wrong model.
 ## Install
 
 ```bash
-git clone <repository-url>
-cd colfov
+git clone https://github.com/bgmseo/ColFOV.git
+cd ColFOV
 python -m venv .venv
 ```
 
@@ -98,16 +106,18 @@ python -c "import hashlib,pathlib; print(hashlib.sha256(pathlib.Path('weights/co
 
 ## Data
 
-**This repository contains no image or video data.** Bring your own frames, supplied
-through `--image` and `--video`. The datasets used in the study are distributed by
+**This repository contains no standalone dataset, sample frame or video intended for
+model input.** It contains only two flattened manuscript-figure reproductions under
+the restrictions in `assets/RIGHTS.md`. Bring your own input, supplied through
+`--image` and `--video`. The public datasets used in the study are distributed by
 their own maintainers under their own terms; obtain them from the official sources and
-comply with those terms:
+comply with those terms. They are linked here and are not mirrored in this repository:
 
 | dataset | official source |
 |---|---|
-| REAL-Colon | `<official dataset page>` |
-| C3VDv2 | `<official dataset page>` |
-| CAS-Colon | `<official dataset page>` |
+| REAL-Colon | [Official Figshare distribution](https://plus.figshare.com/articles/media/REAL-colon_dataset/22202866) |
+| C3VDv2 | [Official project and download page](https://durrlab.github.io/C3VDv2/) |
+| CAS-Colon | [Official Figshare DOI](https://doi.org/10.6084/m9.figshare.28287929) |
 
 Part of the training material is a hospital dataset that is not publicly
 redistributable and is not linked here.
@@ -183,14 +193,15 @@ behaviour. It is not a real-time system and has not been validated as one.
 pytest -q
 ```
 
-55 tests covering the checkpoint gate, four-class output, the 24-frame geometry
+57 tests covering the checkpoint gate, four-class output, the 24-frame geometry
 contract, the cadence contract, the causal state-transition contract, and fail-closed
 decoding. They use **synthetic fixtures only** — no clinical media is required or
 distributed. This is software correctness, not evidence of clinical performance.
 
 ## Intended use and limitations
 
-- **Research use only.** Not a medical device, not for diagnosis or clinical decisions.
+- **Scientific-transparency release only.** Execution or any other use requires prior
+  written permission. Not a medical device, not for diagnosis or clinical decisions.
 - Reported evaluation results are in the paper (see *Citation*); they are not
   reproduced here as headline numbers.
 - The evaluation behind the paper is a development evaluation on a limited number of

@@ -1,7 +1,7 @@
 # Figure assets — provenance
 
-Each file below is a **flattened raster reproduction** of the exact figure that appears
-in the accompanying publication. Rendering to a single raster is deliberate: the
+Each file below is a **flattened raster reproduction** of a figure prepared for the
+accompanying manuscript. Rendering to a single raster is deliberate: the
 vector sources embed the individual clinical panels as separate objects, and a
 flattened PNG composites them so no source frame can be recovered as a separate file.
 
@@ -24,7 +24,8 @@ embedded clinical rasters, are **not** included in this repository.
 
 ## Conditions recorded at the time of inclusion
 
-- Inclusion was approved by the author for these exact published figures only.
+- Inclusion, including the clinical sample panels composited within them, was approved
+  by the author for these exact manuscript figures only.
 - No other clinical image, qualitative example, or newly rendered panel is included.
 - Whether this reproduction is compatible with the hospital data-use agreement, the
   IRB approval and any journal copyright transfer remains the responsibility of the
