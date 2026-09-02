@@ -2,9 +2,12 @@
 
 [한국어](README.ko.md)
 
-Semantic-guided four-class segmentation of endoscopic frames, and the three geometry
-products derived from it: an inner-FOV box, a full-FOV box, and a conditional
-session-level picture-in-picture (PiP) box.
+An endoscopic frame is not a clean image. It carries the optical field plus black
+corners, a processor UI border, letterbox padding, and sometimes a picture-in-picture
+window. Send that whole frame to a downstream model — depth, detection,
+classification — and a large share of the pixels are not tissue at all.
+
+ColFOV finds the part that is, and gives you rectangles you can crop with.
 
 Code and model weights are publicly available for scientific transparency. This is
 **not** open-source software — see [License](#license).
@@ -15,67 +18,136 @@ permission from the copyright holder is required.
 
 ![ColFOV workflow](assets/fig1_workflow.png)
 
-## What the model outputs, and what it does not
+## When this is useful
 
-The network outputs **only a segmentation mask**:
+- You are about to run depth, detection or classification on colonoscopy frames and
+  want the UI and black borders gone first.
+- Your recordings come from more than one processor or site, so a hardcoded crop
+  rectangle does not transfer between them.
+- A picture-in-picture window appears mid-procedure and you need to know **when** it is
+  there and **where** — not assume a fixed corner.
+- You want a preprocessing step that refuses to guess: when the evidence is missing it
+  returns `null` and a reason, instead of a plausible-looking wrong box.
+
+Not for real-time capture-card pipelines — this is offline replay — and not for
+anything clinical.
+
+## What comes out
+
+The network produces one thing: a per-pixel class map.
 
 ```
-logits  [B, 4, H, W]
-mask    [H, W], values in {0, 1, 2, 3}
+mask[y, x] ∈ {0, 1, 2, 3}
 ```
 
-| value | class | meaning |
+| value | class | what it is |
 |---:|---|---|
-| 0 | `background_ui` | on-screen interface, letterbox, anything outside the optical field |
+| 0 | `background_ui` | processor UI, letterbox, anything outside the optics |
 | 1 | `valid_fov_tissue` | usable endoscopic tissue |
 | 2 | `black_corner` | dark peripheral region inside the frame |
 | 3 | `popup_overlay` | an overlaid sub-window |
 
 ![Label examples](assets/sup_fig3_label_pairs.png)
 
-Both figures are flattened reproductions of figures prepared for the accompanying
-manuscript.
-They are illustrations, not data: see `assets/RIGHTS.md` and `assets/PROVENANCE.md`.
+Everything else is **geometry computed from those masks** — three rectangles, in the
+coordinates of your own frame:
 
-**All three bounding boxes are derived geometry, not network outputs.** They are
-computed from masks by ordinary geometry, and each can be unavailable:
-
-| field | derived from | `null` when |
+| box | what it bounds | typical use |
 |---|---|---|
-| `inner_fov_box` | 24 calibration frames, stable class-1 tissue | fewer than 50% of the sampled frames are admissible |
-| `full_fov_box` | the same 24 frames, stable class-1-or-2 support | same condition |
-| `active_session_pip_box` | causal monitoring of the whole recording | no lock, evidence insufficient, TTL expired, or stability gate not passed |
+| `inner_fov_box` | a fixed 1.25-aspect rectangle fitting **inside** stable tissue | model input crop: no UI, no black corner, no padding |
+| `full_fov_box` | the bounding rectangle of the whole stable field | display, or a crop that must not lose peripheral field |
+| `active_session_pip_box` | the picture-in-picture window live at that instant | route the sub-view separately, or exclude it from the main crop |
 
-All three keys always exist in the session output. `null` is a **fail-closed
-abstention** carrying a reason code — never an error, and never replaced by a fallback
-box.
+## Using the boxes
 
-### `active_session_pip_box` is time-dependent
+Boxes are `(x1, y1, x2, y2)`, integer, `x2`/`y2` **exclusive**, in the original frame's
+resolution — so they slice directly:
 
-It is not a property of a recording. It is the box that was live **at one instant**,
-given only the evidence that had arrived by then. A recording whose PiP window moves
-has more than one correct answer over its length.
+```python
+import cv2, json
 
-`session_result.json` reports `final_active_session_pip_box`, which is the **last state
-only**. Do not apply it retrospectively to earlier timestamps — use the per-observation
-records in `monitor_records.jsonl`, where each row carries `frame_index`,
-`timestamp_sec`, `active_session_pip_box`, `pip_state`, `pip_epoch`, `pip_event`
+result = json.load(open("outputs/session_example/session_result.json"))
+frame = cv2.imread("/path/to/frame.png")
+
+box = result["inner_fov_box"]
+if box is not None:
+    x1, y1, x2, y2 = box
+    crop = frame[y1:y2, x1:x2]        # feed this to your downstream model
+else:
+    crop = frame                      # ColFOV abstained; your fallback, your decision
+```
+
+The two FOV boxes are **session-level**: derived once from the recording, then valid
+for every frame of it. The PiP box is not — it changes over time, so read it per frame:
+
+```python
+import json
+
+live = {}
+for line in open("outputs/session_example/monitor_records.jsonl"):
+    r = json.loads(line)
+    live[r["frame_index"]] = r["active_session_pip_box"]   # box or None at that instant
+```
+
+`null` is a deliberate answer, not a failure. It means the evidence for that rectangle
+was not there, and the reason code says which condition was not met. Do not substitute
+a fallback box: a wrong crop corrupts everything downstream of it, silently.
+
+### Why the PiP box must be read per frame
+
+If a picture-in-picture window moves during a procedure, no single rectangle is right
+for the whole recording. `session_result.json` reports
+`final_active_session_pip_box`, which is only the **last** state; applying it to
+earlier timestamps gives the wrong box for the stretch before the window moved. Use
+`monitor_records.jsonl`, where each row carries `frame_index`, `timestamp_sec`,
+`active_session_pip_box`, `pip_state`, `pip_epoch`, `pip_event`
 (`lock` / `unlock` / `relock` / `null`) and `pip_reason`.
 
-## Model
+## What adapts, what you choose, what is fixed
 
-| | |
-|---|---|
-| architecture | TinyUNet, 4 classes, 8 base channels |
-| parameters | 487,316 |
-| input | 512 × 384, letterbox, `/255` normalisation only |
-| checkpoint | `weights/colfov_b8s3.pt`, 1.908 MiB |
-| sha256 | `df4054b8d2a22413ae232b7ea2ce01cbe70c838031167b5afb72c71ce9670713` |
+**Adapts to your input, automatically**
 
-The loader reads the architecture from the checkpoint's own embedded config, requires
-4 classes and 8 base channels, loads the state dict strictly, and verifies the hash.
-`TinyUNet` has **no architecture defaults**, so a checkpoint cannot be loaded into a
-plausible-looking wrong model.
+- Box coordinates come back in your frame's own resolution — no rescaling on your side.
+- The monitor rate is `min(source_fps, --monitor-hz)`. A 25 fps clip at `--monitor-hz 5`
+  gives 5 Hz; a 3 fps clip gives 3 Hz, because a source cannot be sampled faster than
+  it exists.
+- Popup detection is active because this checkpoint has a class-3 channel. A 3-class
+  model is reported as popup-blind rather than silently popup-free.
+
+**Your choice**
+
+| flag | default | effect |
+|---|---|---|
+| `--device` | `cpu` | `cuda` is roughly 5–10× faster; see [Speed](#speed) |
+| `--monitor-hz` | `5.0` | how often the PiP monitor looks — lower is faster and coarser |
+| `--weights` | `weights/colfov_b8s3.pt` | |
+| `--out` | `outputs/...` | output directory |
+
+**Fixed, and deliberately not exposed**
+
+24 calibration frames; the 0.50 admissible fraction; the 1.25 inner-box aspect; the 0.4
+agreement threshold; the stability gates (IoU 0.95, area ratio 0.97); the drift
+threshold (IoU 0.50); the minimum routed frames and temporal bins. These are the frozen
+values the model was evaluated under. Changing them would produce boxes that no longer
+correspond to any reported behaviour, so they are not command-line options.
+
+## Speed
+
+Single frame, no batching, measured on an RTX 5060 Ti and an Intel CPU:
+
+| | 1920×1080 | 1350×1080 | 1280×720 |
+|---|---:|---:|---:|
+| mask only, GPU | 4.0 ms | 3.5 ms | 3.3 ms |
+| mask + popup + routing, GPU | 48 ms | 36 ms | 21 ms |
+| mask only, CPU | 220 ms | 165 ms | 109 ms |
+| mask + popup + routing, CPU | 267 ms | 199 ms | 131 ms |
+
+The network is small — 487,316 parameters — so most of the per-frame cost after the
+mask is the popup post-processing and routing gate, which run on CPU through OpenCV.
+
+Whole recording, GPU, 1280×720, 5 Hz monitoring, decode included: **≈ 8.5 s of compute
+per minute of video**, about 7× faster than realtime. Only monitored frames are
+segmented — a 59 fps recording at 5 Hz means roughly 1 frame in 12, not every frame.
 
 ## Install
 
@@ -85,7 +157,7 @@ cd ColFOV
 python -m venv .venv
 ```
 
-Activate the environment — Linux/macOS:
+Linux/macOS:
 
 ```bash
 source .venv/bin/activate
@@ -97,59 +169,39 @@ Windows (PowerShell):
 .venv\Scripts\Activate.ps1
 ```
 
-Then:
-
 ```bash
 pip install -e ".[test]"
-python -c "import hashlib,pathlib; print(hashlib.sha256(pathlib.Path('weights/colfov_b8s3.pt').read_bytes()).hexdigest())"
 ```
-
-## Data
-
-**This repository contains no standalone dataset, sample frame or video intended for
-model input.** It contains only two flattened manuscript-figure reproductions under
-the restrictions in `assets/RIGHTS.md`. Bring your own input, supplied through
-`--image` and `--video`. The public datasets used in the study are distributed by
-their own maintainers under their own terms; obtain them from the official sources and
-comply with those terms. They are linked here and are not mirrored in this repository:
-
-| dataset | official source |
-|---|---|
-| REAL-Colon | [Official Figshare distribution](https://plus.figshare.com/articles/media/REAL-colon_dataset/22202866) |
-| C3VDv2 | [Official project and download page](https://durrlab.github.io/C3VDv2/) |
-| CAS-Colon | [Official Figshare DOI](https://doi.org/10.6084/m9.figshare.28287929) |
-
-Part of the training material is a hospital dataset that is not publicly
-redistributable and is not linked here.
 
 ## Run
 
-Single frame — four-class mask plus frame-local diagnostics:
+The repository ships **no image or video data**. Point it at your own files.
+
+One frame — mask plus frame-local diagnostics:
 
 ```bash
 python examples/infer_image.py --image /path/to/frame.png --out outputs/image_example
 ```
 
-Writes `mask.png`, `overlay.png` and `frame_result.json`. A single frame yields **no**
-FOV boxes and **no** session PiP box: the FOV boxes need a calibration sample and the
-PiP box is causal over a timeline.
+Produces `mask.png`, `overlay.png`, `frame_result.json`. A single frame gives no FOV
+boxes and no PiP box: the FOV boxes need the calibration sample, and the PiP box needs
+a timeline.
 
-Whole recording — all three geometry products:
+A whole recording — all three rectangles:
 
 ```bash
-python examples/infer_session.py --video /path/to/video.mp4 --out outputs/session_example
+python examples/infer_session.py --video /path/to/video.mp4 --out outputs/session_example --device cuda
 ```
 
-Writes `session_result.json`, `calibration_summary.json` and `monitor_records.jsonl`.
+Produces `session_result.json`, `calibration_summary.json`, `monitor_records.jsonl`.
 
-### Output schema
+### What the files contain
 
-`session_result.json` (placeholder values; shapes and keys, not results):
+`session_result.json` — the session-level answer. Keys and shapes, with placeholder
+values:
 
 ```json
 {
-  "segmentation_classes": 4,
-  "class_names": ["background_ui", "valid_fov_tissue", "black_corner", "popup_overlay"],
   "inner_fov_box": [null, null, null, null],
   "full_fov_box": [null, null, null, null],
   "fov_reason": "<ok | abstain reason>",
@@ -170,22 +222,51 @@ Writes `session_result.json`, `calibration_summary.json` and `monitor_records.js
 }
 ```
 
-## How the session pass works
+`monitor_records.jsonl` — one line per monitored observation. The authoritative PiP
+output.
 
-1. **Calibration.** Exactly 24 evenly-spaced frames are taken from the recording, and a
-   model-free admissibility guard runs on that sample. If the admissible **fraction**
-   falls below 0.50 the FOV geometry abstains. The rule is a fraction, not a count of
-   12; at 24 frames it happens to mean 12.
-2. **Monitoring.** The recording is replayed in time order at a fixed cadence, 5 Hz by
-   default. The scheduler carries a fractional phase, so the long-run rate is exactly
-   `min(source_fps, monitor_hz)` — a rounded integer stride would drift.
-3. **Qualification.** A session box locks only once the evidence and stability gates
-   pass. A confirmed relocation unlocks, rotates the epoch, and does not immediately
-   relock from the evidence that justified the old position.
+`calibration_summary.json` — how many of the 24 calibration frames were admissible, and
+why the FOV geometry abstained if it did.
 
-The session example performs **causal, fixed-cadence offline replay**. It does not
-claim validation of capture-card timing, asynchronous decoding, or live-stream deadline
-behaviour. It is not a real-time system and has not been validated as one.
+## How a session is processed
+
+1. **Calibration.** 24 evenly-spaced frames are taken from the recording and screened
+   by a model-free guard (dynamic range, crushed/saturated fraction, gradient energy).
+   If under 50% survive, both FOV boxes abstain. The rule is a fraction, not a count;
+   at 24 frames it works out to 12.
+2. **Monitoring.** The recording is replayed in time order at a fixed cadence. The
+   scheduler carries a fractional phase, so the long-run rate is exactly
+   `min(source_fps, monitor_hz)` — a rounded integer stride would drift over an hour.
+3. **Qualification.** The PiP box locks only after enough temporally spread routed
+   evidence passes a stability check. A confirmed relocation unlocks it, rotates the
+   epoch, and does not immediately relock from the evidence that justified the old
+   position.
+
+This is causal offline replay: what is reported for an instant uses only evidence that
+had arrived by then. It is not validated for capture-card timing, asynchronous
+decoding, or live-stream deadlines.
+
+## Model
+
+TinyUNet, 4 classes, 8 base channels, 487,316 parameters. Input 512 × 384, letterbox,
+`/255` normalisation only. The loader reads the architecture from the checkpoint's own
+config, requires 4 classes and 8 base channels, loads strictly, and verifies the file
+against `weights/SHA256SUMS`. `TinyUNet` has no architecture defaults, so a checkpoint
+cannot be loaded into a plausible-looking wrong model.
+
+## Data
+
+Not included. The datasets used in the study are distributed by their maintainers under
+their own terms — obtain them from the official sources and comply with those terms:
+
+| dataset | official source |
+|---|---|
+| REAL-Colon | `<official dataset page>` |
+| C3VDv2 | `<official dataset page>` |
+| CAS-Colon | `<official dataset page>` |
+
+Part of the training material is a hospital dataset that is not publicly
+redistributable and is not linked here.
 
 ## Tests
 
@@ -193,23 +274,21 @@ behaviour. It is not a real-time system and has not been validated as one.
 pytest -q
 ```
 
-57 tests covering the checkpoint gate, four-class output, the 24-frame geometry
-contract, the cadence contract, the causal state-transition contract, and fail-closed
-decoding. They use **synthetic fixtures only** — no clinical media is required or
-distributed. This is software correctness, not evidence of clinical performance.
+Covers the checkpoint gate, four-class output, the 24-frame geometry contract, the
+cadence contract, the causal state-transition contract, fail-closed decoding, and that
+the CLI examples stay aligned with the exported dataclasses. Synthetic fixtures only —
+no clinical media is needed or shipped. This is software correctness, not evidence of
+clinical performance.
 
-## Intended use and limitations
+## Limitations
 
-- **Scientific-transparency release only.** Execution or any other use requires prior
-  written permission. Not a medical device, not for diagnosis or clinical decisions.
-- Reported evaluation results are in the paper (see *Citation*); they are not
-  reproduced here as headline numbers.
-- The evaluation behind the paper is a development evaluation on a limited number of
-  recordings; it is not an independent confirmatory validation.
+- Research use only. Not a medical device; not for diagnosis or clinical decisions.
+- The evaluation behind this work is a development evaluation on a limited number of
+  recordings, not an independent confirmatory validation. Reported results are in the
+  paper.
 - Behaviour on equipment, resolutions or overlay styles outside the development
   material is unknown.
-- The three geometry products abstain by design. An abstention is the intended
-  fail-closed outcome, not a failure to be worked around with a fallback box.
+- Abstention is by design. A `null` box is the intended fail-closed outcome.
 
 ## License
 
