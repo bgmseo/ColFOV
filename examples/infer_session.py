@@ -18,6 +18,16 @@ from pathlib import Path
 from colfov import CLASS_NAMES, analyze_session, load_model
 
 
+def _resolve_device(name: str) -> str:
+    """Fail with an explanation rather than a bare torch assertion."""
+    import torch
+    if name.startswith("cuda") and not torch.cuda.is_available():
+        raise SystemExit(
+            f"--device {name} was requested but this PyTorch build has no CUDA "
+            "support. Install a CUDA build of torch, or run with --device cpu.")
+    return name
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--video", required=True)
@@ -26,6 +36,7 @@ def main() -> int:
     ap.add_argument("--device", default="cpu")
     ap.add_argument("--monitor-hz", type=float, default=5.0, dest="monitor_hz")
     args = ap.parse_args()
+    args.device = _resolve_device(args.device)
 
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)

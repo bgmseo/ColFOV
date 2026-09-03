@@ -182,10 +182,14 @@ PiP 박스도 나오지 않습니다 — FOV 박스는 calibration 표본이, Pi
 영상 전체 — 사각형 3개 전부:
 
 ```bash
-python examples/infer_session.py --video /path/to/video.mp4 --out outputs/session_example --device cuda
+python examples/infer_session.py --video /path/to/video.mp4 --out outputs/session_example
 ```
 
 `session_result.json`, `calibration_summary.json`, `monitor_records.jsonl`이 나옵니다.
+
+PyTorch가 CUDA 빌드라면 두 명령 모두에 `--device cuda`를 붙일 수 있습니다. 기본
+`pip install torch`는 CUDA 빌드가 아닌 경우가 많고, 그럴 때 예제가 raw assertion 대신
+안내 메시지를 냅니다.
 
 ### 파일별 내용
 

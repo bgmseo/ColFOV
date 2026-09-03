@@ -20,6 +20,16 @@ from colfov import CLASS_NAMES, analyze_frame, load_model
 OVERLAY_BGR = {0: (140, 60, 15), 2: (30, 30, 220), 3: (40, 200, 255)}
 
 
+def _resolve_device(name: str) -> str:
+    """Fail with an explanation rather than a bare torch assertion."""
+    import torch
+    if name.startswith("cuda") and not torch.cuda.is_available():
+        raise SystemExit(
+            f"--device {name} was requested but this PyTorch build has no CUDA "
+            "support. Install a CUDA build of torch, or run with --device cpu.")
+    return name
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--image", required=True)
@@ -27,6 +37,7 @@ def main() -> int:
     ap.add_argument("--out", default="outputs/image_example")
     ap.add_argument("--device", default="cpu")
     args = ap.parse_args()
+    args.device = _resolve_device(args.device)
 
     frame = cv2.imread(args.image, cv2.IMREAD_COLOR)
     if frame is None:

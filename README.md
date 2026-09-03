@@ -186,10 +186,14 @@ a timeline.
 A whole recording — all three rectangles:
 
 ```bash
-python examples/infer_session.py --video /path/to/video.mp4 --out outputs/session_example --device cuda
+python examples/infer_session.py --video /path/to/video.mp4 --out outputs/session_example
 ```
 
 Produces `session_result.json`, `calibration_summary.json`, `monitor_records.jsonl`.
+
+Add `--device cuda` to either command if your PyTorch build has CUDA support — a
+default `pip install torch` often does not, and the examples say so rather than failing
+with a bare assertion.
 
 ### What the files contain
 
