@@ -14,8 +14,8 @@ repository-code: "https://github.com/bgmseo/ColFOV"
 authors:
   - family-names: "Seo"
     given-names: "Bo Geum"
-    email: "bgm.seo@snu.ac.kr"
-    affiliation: "Seoul National University"
+    email: "bgm.seo@seemedi.com"
+    affiliation: "Seemedi AI Co., Ltd."
 keywords:
   - colonoscopy
   - endoscopy
