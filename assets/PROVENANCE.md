@@ -10,19 +10,23 @@ Ancillary PNG metadata was removed; each file contains only `IHDR`, `IDAT` and `
 | asset | dimensions | sha256 |
 |---|---|---|
 | `fig1_workflow.png` | 1800 × 1047 | `babfaa2375c376aa145acc500843a1eba712240d7e9d21d34138b90e2d15ae92` |
-| `sup_fig3_label_pairs.png` | 1600 × 598 | `c8ba69e7e2c39f485f498ba39a59b031dc81c07811b61faa831215ab86d5fc65` |
+| `sup_fig3_label_pairs.png` | 1600 × 598 | `40b24d6c84cc74f7e20be42cfc51c87f1f614899b11be5286cf8883dad4b2392` |
 
 ## Sources
 
 | asset | source figure file | source sha256 (prefix) |
 |---|---|---|
 | `fig1_workflow.png` | `figures/fig1_workflow.pdf` | `af78a80f086dc3fd…` |
-| `sup_fig3_label_pairs.png` | `figures/sup_fig3_label_pairs.pdf` | `e26aca226bc04d05…` |
+| `sup_fig3_label_pairs.png` | `figures/candidates/git_sup_fig3_label_pairs.pdf` | `6840ea89bdb1d465…` |
 
 The manuscript masters were not modified. The vector sources, which contain the
 embedded clinical rasters, are **not** included in this repository.
 
-Re-rendered 2026-09-04 from the current manuscript masters. The previous assets came
+The label-pair asset is the repository-specific variant (`git_` prefix), which carries the
+"Three b-boxes from semantic segmentation" panel and the Full-FOV / Inner-FOV / PiP legend;
+the manuscript's own supplementary figure is a different layout and is not used here.
+
+Re-rendered 2026-09-04 from the current masters. The previous assets came
 from a superseded working export whose embedded rasters were placed off their native
 aspect ratio (25 of 25, worst 12.6 % too tall), which misstated the very geometry the
 figure exists to show. That was corrected in the Illustrator master on 2026-09-03.

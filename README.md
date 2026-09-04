@@ -151,11 +151,14 @@ mask[y, x] ∈ {0, 1, 2, 3}
 | value | class | in the figure | what it is |
 |---:|---|---|---|
 | 0 | `background_ui` | UI / background | processor UI, letterbox, anything outside the optics |
-| 1 | `valid_fov_tissue` | Tissue | usable endoscopic tissue |
-| 2 | `black_corner` | Corner | dark peripheral region inside the frame |
+| 1 | `valid_fov_tissue` | tissue | usable endoscopic tissue |
+| 2 | `black_corner` | black corner | dark peripheral region inside the frame |
 | 3 | `popup_overlay` | PiP | an overlaid sub-window |
 
-![Label examples](assets/sup_fig3_label_pairs.png)
+![Three b-boxes from semantic segmentation](assets/sup_fig3_label_pairs.png)
+
+Public and hospital recordings differ in resolution and screen layout, but the same four
+classes yield the same three boxes.
 
 </details>
 
