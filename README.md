@@ -2,21 +2,27 @@
 
 [한국어](README.ko.md)
 
-Crop colonoscopy frames down to the part that is actually endoscopic image, and find the
-picture-in-picture window when one is present.
+**The image you feed a colonoscopy AI model can contain a lot that is not endoscopic
+field.** A processor UI border, black corners where the optics do not reach, letterbox
+padding, and sometimes a picture-in-picture window showing a second view. Whatever your
+model is — depth, detection, classification — those pixels go in with everything else, and
+a crop rectangle hardcoded for one recorder does not transfer to the next.
 
 ![ColFOV workflow](assets/fig1_workflow.png)
 
-A colonoscopy frame arrives wrapped in things that are not tissue: a processor UI border,
-black corners where the optics do not reach, letterbox padding, and sometimes a
-picture-in-picture window showing a second view. ColFOV segments the frame into those four
-classes and turns the result into three rectangles you can crop with — a Full-FOV bbox
-around the whole usable field, an Inner-FOV bbox that fits inside stable tissue at a fixed
-1.25 aspect, and a PiP bbox for the sub-window. The first two are computed once per
-recording and reused; the PiP bbox is tracked over time, because the window moves.
+ColFOV segments the frame into four classes and turns the result into three rectangles you
+can crop with: a **Full-FOV bbox** around the whole usable field, an **Inner-FOV bbox** that
+fits inside stable tissue at a fixed 1.25 aspect, and a **PiP bbox** for the sub-window. The
+first two are computed once per recording and reused; the PiP bbox is tracked over time,
+because the window moves.
 
-Code and model weights are published here for scientific transparency. Licensing terms are
-not settled yet and will be added when the manuscript is submitted.
+Which one you want depends on the task. Inner-FOV gives a clean rectangle with no UI and no
+corner, which is what a depth or classification model wants. Full-FOV keeps the whole field
+including the periphery, which matters when an annotation can sit near the edge. The paper
+reports what each choice does downstream; the point here is that it is a choice, made
+explicit instead of assumed.
+
+Licensing terms are not settled yet and will be added when the manuscript is submitted.
 
 ## Install
 
@@ -30,7 +36,8 @@ pip install -e ".[test]"
 
 ## Use it
 
-No image or video data ships with this repository, so point it at your own files.
+No image or video data ships with this repository. Download whatever dataset you want to
+work on, then point ColFOV at the file.
 
 ```bash
 python examples/infer_session.py --video /path/to/video.mp4 --out outputs/session
@@ -51,12 +58,18 @@ box = result["inner_fov_box"]
 crop = frame[box[1]:box[3], box[0]:box[2]] if box else frame
 ```
 
-A single frame works too, though it can only give you the mask and a frame-local PiP
-candidate — the FOV boxes need a calibration sample and the PiP box needs a timeline:
+A single frame works too, though it only gives you the mask and a frame-local PiP
+candidate:
 
 ```bash
 python examples/infer_image.py --image /path/to/frame.png --out outputs/image
 ```
+
+The FOV boxes are missing here by design. One frame cannot tell a passing occlusion — a
+wall of mucosa, a wash, a moment of darkness — from the true edge of the field, so the
+boxes are built from what several frames agree on rather than from any single one. The PiP
+box needs a timeline for the same reason: a window only counts once it has stayed put long
+enough to prove it is really there.
 
 Add `--device cuda` to either command if your PyTorch build has CUDA; a plain
 `pip install torch` often does not, and the examples will tell you so rather than dying on
@@ -209,6 +222,11 @@ Over a whole recording on GPU at 1280×720 with 5 Hz monitoring and decoding inc
 works out to roughly 8.5 seconds of compute per minute of video, about seven times faster
 than realtime. Only the monitored frames are segmented, so a 59 fps recording at 5 Hz means
 about one frame in twelve rather than all of them.
+
+`--monitor-hz` is the dial between speed and resolution in time, and the right setting
+depends on your data. Lower it and you finish sooner but see the PiP window later, or miss
+a brief one entirely; raise it and you catch shorter events at proportionally more compute.
+The FOV boxes are unaffected either way — they come from the calibration pass.
 
 </details>
 
