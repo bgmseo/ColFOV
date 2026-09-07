@@ -2,11 +2,14 @@
 
 [한국어](README.ko.md)
 
-**The image you feed a colonoscopy AI model can contain a lot that is not endoscopic
-field.** A processor UI border, black corners where the optics do not reach, letterbox
-padding, and sometimes a picture-in-picture window showing a second view. Whatever your
-model is — depth, detection, classification — those pixels go in with everything else, and
-a crop rectangle hardcoded for one recorder does not transfer to the next.
+**A recorded colonoscopy frame is not the same thing as the view your model should
+analyse.** Around the endoscopic field sit a processor UI border, black corners where the
+optics do not reach, letterbox padding, and sometimes a picture-in-picture window showing a
+second view. Which rectangle you cut out of that frame decides which tissue and surgical
+tools stay visible, how large they are after resizing, and whether interface graphics reach
+the model at all. That is a real experimental choice, and it usually goes unreported.
+Copying a fixed crop from one dataset does not carry over to the next recorder, and even an
+accurate field mask still leaves the black corners inside its own bounding rectangle.
 
 ![ColFOV workflow](assets/fig1_workflow.png)
 
@@ -19,8 +22,8 @@ because the window moves.
 Which one you want depends on the task. Inner-FOV gives a clean rectangle with no UI and no
 corner, which is what a depth or classification model wants. Full-FOV keeps the whole field
 including the periphery, which matters when an annotation can sit near the edge. The paper
-reports what each choice does downstream; the point here is that it is a choice, made
-explicit instead of assumed.
+reports what each choice does downstream. This repository gives you the rectangles
+themselves and the record of how they were derived.
 
 Licensing terms are not settled yet and will be added when the manuscript is submitted.
 
