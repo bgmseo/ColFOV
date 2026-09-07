@@ -112,6 +112,9 @@ class SessionAnalysis:
     n_frames_in_source: int
     n_frames_monitored: int
     monitor_records_path: Path | None
+    # False when the caller asked for FOV boxes only. The PiP fields above then carry
+    # their "never observed" values rather than a measurement, and no monitoring pass ran.
+    pip_enabled: bool = True
 
 
 def analyze_frame(model, model_config: dict, frame_bgr: np.ndarray,
@@ -138,12 +141,19 @@ def _evenly_spaced(n_total: int, k: int) -> list[int]:
 def analyze_session(video_path, model, model_config: dict, *, device="cpu",
                     monitor_hz: float = DEFAULT_MONITOR_HZ,
                     method: str = METHOD_MEDIAN,
-                    monitor_records_path=None) -> SessionAnalysis:
+                    monitor_records_path=None,
+                    pip_enabled: bool = True) -> SessionAnalysis:
     """Fixed-cadence causal monitoring of one recording.
 
     Two passes over the file, deliberately: the FOV boxes come from a 24-frame
     calibration sample, and the PiP box comes from monitoring the whole recording in
     time order. They are not the same population and must not be conflated.
+
+    `pip_enabled=False` runs calibration only. The monitoring pass, the routing content
+    gate and the PiP coordinate updates are all skipped, so nothing walks the recording
+    a second time and no `monitor_records.jsonl` is written. The FOV boxes come from the
+    same four-class segmentation as always, and the PiP fields report `pip_disabled`
+    rather than a measured absence -- a caller must not read them as "no PiP was there".
     """
     cap = cv2.VideoCapture(str(video_path))
     if not cap.isOpened():
@@ -196,6 +206,18 @@ def analyze_session(video_path, model, model_config: dict, *, device="cpu",
     # --- pass 2: causal fixed-cadence monitoring -> active_session_pip_box ---------
     # Fractional phase, not a rounded stride: see colfov.cadence for why.
     hz = effective_hz(src_fps, monitor_hz)
+    if not pip_enabled:
+        # No second decode, no content gate, no coordinate updates. The effective
+        # cadence is still reported so the two modes stay comparable on paper.
+        return SessionAnalysis(
+            inner_fov_box=inner_box, full_fov_box=full_box, fov_reason=fov_reason,
+            final_active_session_pip_box=None,
+            final_session_pip_reason="pip_disabled",
+            final_pip_epoch=0, n_pip_epoch_rotations=0,
+            n_pip_lock_events=0, n_pip_unlock_events=0,
+            monitor_hz=monitor_hz, effective_monitor_hz=hz, calibration=summary,
+            n_frames_in_source=n_total, n_frames_monitored=0,
+            monitor_records_path=None, pip_enabled=False)
     phase = PhaseAccumulator(effective_hz=hz)
     h, w = None, None
     qualifier = state = None
@@ -265,4 +287,5 @@ def analyze_session(video_path, model, model_config: dict, *, device="cpu",
         n_pip_lock_events=locks, n_pip_unlock_events=unlocks,
         monitor_hz=monitor_hz, effective_monitor_hz=hz, calibration=summary,
         n_frames_in_source=n_total, n_frames_monitored=n_monitored,
-        monitor_records_path=Path(monitor_records_path) if monitor_records_path else None)
+        monitor_records_path=Path(monitor_records_path) if monitor_records_path else None,
+        pip_enabled=True)

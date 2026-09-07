@@ -104,6 +104,32 @@ Each row also carries `timestamp_sec`, `pip_state`, `pip_epoch`, `pip_reason`, a
 `pip_event` of `lock`, `unlock`, `relock` or `null`, so you can see exactly when the window
 appeared, moved or went away.
 
+## Turning PiP off
+
+If your recordings have no secondary window, or you only want the two FOV boxes, run
+without it:
+
+```bash
+python examples/infer_session.py --video /path/to/video.mp4 --out outputs/session --no-pip
+```
+
+or, from Python:
+
+```python
+r = analyze_session(video, model, cfg, pip_enabled=False)
+```
+
+The monitoring pass, the routing content gate and the PiP coordinate updates are all
+skipped, so nothing walks the recording a second time and no `monitor_records.jsonl` is
+written. Everything else is unchanged: the same four-class segmentation runs on the same
+24 calibration frames, and `inner_fov_box` and `full_fov_box` come out identical to a
+normal run and stay applicable for the whole recording.
+
+One thing to be careful about. With PiP off, `final_session_pip_reason` reads
+`pip_disabled` and `pip_enabled` is `false`. That is a statement about the run, not about
+the recording — it does not mean no PiP was there. If you need to know whether a window
+appeared, leave PiP on.
+
 <details>
 <summary><b>Output schema</b></summary>
 
@@ -117,6 +143,7 @@ results:
   "fov_reason": "<ok | abstain reason>",
   "final_active_session_pip_box": null,
   "final_session_pip_reason": "<reason code>",
+  "pip_enabled": true,
   "final_pip_epoch": null,
   "n_pip_epoch_rotations": null,
   "n_pip_lock_events": null,
@@ -143,6 +170,7 @@ insufficient_split_evidence    too few bins to run the stability check
 session_box_failed_stability   the split halves disagreed
 no_reliable_popup_footprint    a popup is visible but has no usable box
 model_has_no_class3_channel    a 3-class model: popup-blind, not popup-free
+pip_disabled                   the run asked for FOV boxes only, so nothing was looked for
 ```
 
 `calibration_summary.json` records how many of the 24 calibration frames were usable and
@@ -191,6 +219,7 @@ Four things are yours to set:
 |---|---|---|
 | `--device` | `cpu` | `cuda` is roughly 5–10× faster |
 | `--monitor-hz` | `5.0` | how often the PiP monitor looks; lower is faster and coarser |
+| `--no-pip` | off | FOV boxes only: no monitoring pass, no content gate, no PiP updates |
 | `--weights` | `weights/colfov_b8s3.pt` | |
 | `--out` | `outputs/...` | output directory |
 
@@ -226,7 +255,8 @@ about one frame in twelve rather than all of them.
 `--monitor-hz` is the dial between speed and resolution in time, and the right setting
 depends on your data. Lower it and you finish sooner but see the PiP window later, or miss
 a brief one entirely; raise it and you catch shorter events at proportionally more compute.
-The FOV boxes are unaffected either way — they come from the calibration pass.
+The FOV boxes are unaffected either way — they come from the calibration pass, which is
+also why `--no-pip` leaves them untouched while removing the monitoring pass entirely.
 
 </details>
 

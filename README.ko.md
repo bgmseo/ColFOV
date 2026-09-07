@@ -98,6 +98,29 @@ for line in open("outputs/session/monitor_records.jsonl"):
 `pip_event`가 `lock` · `unlock` · `relock` · `null` 중 하나로 찍힙니다. 창이 언제 나타나고
 움직이고 사라졌는지 그대로 따라갈 수 있습니다.
 
+## PiP를 끄고 쓰기
+
+보조 창이 없는 영상이거나 FOV 박스 둘만 필요하면 끄고 돌리면 됩니다.
+
+```bash
+python examples/infer_session.py --video /path/to/video.mp4 --out outputs/session --no-pip
+```
+
+파이썬에서는 이렇게 합니다.
+
+```python
+r = analyze_session(video, model, cfg, pip_enabled=False)
+```
+
+모니터링 패스, 라우팅 콘텐츠 게이트, PiP 좌표 갱신이 전부 빠집니다. 영상을 두 번 훑지
+않고 `monitor_records.jsonl`도 만들지 않습니다. 나머지는 그대로입니다. 같은 4-class
+모델이 같은 24장 calibration 프레임을 돌고, `inner_fov_box`와 `full_fov_box`는 평소와
+똑같이 나오며 영상 전체에 그대로 적용됩니다.
+
+한 가지만 주의하세요. PiP를 끄면 `final_session_pip_reason`이 `pip_disabled`, `pip_enabled`가
+`false`로 나옵니다. 이건 이번 실행에 대한 기록이지 영상에 대한 판정이 아닙니다. PiP가
+없었다는 뜻이 아니라 찾지 않았다는 뜻입니다. 창이 있었는지 알아야 하면 켜 두세요.
+
 <details>
 <summary><b>출력 스키마</b></summary>
 
@@ -110,6 +133,7 @@ for line in open("outputs/session/monitor_records.jsonl"):
   "fov_reason": "<ok | abstain reason>",
   "final_active_session_pip_box": null,
   "final_session_pip_reason": "<reason code>",
+  "pip_enabled": true,
   "final_pip_epoch": null,
   "n_pip_epoch_rotations": null,
   "n_pip_lock_events": null,
@@ -136,6 +160,7 @@ insufficient_split_evidence    stability 검사를 돌릴 bin이 모자람
 session_box_failed_stability   split 양쪽이 어긋남
 no_reliable_popup_footprint    popup은 보이는데 쓸 만한 박스가 안 나옴
 model_has_no_class3_channel    3-class 모델이라 popup을 못 봄 (없는 게 아님)
+pip_disabled                   FOV 박스만 요청한 실행이라 아예 찾지 않음
 ```
 
 `calibration_summary.json`에는 24장 중 몇 장이 쓸 만했는지, abstain했다면 왜 그랬는지가
@@ -176,12 +201,13 @@ mask[y, x] ∈ {0, 1, 2, 3}
 채널이 있어서 켜집니다. 3-class 모델이면 "popup 없음"이 아니라 "popup을 못 봄"으로
 보고합니다.
 
-정할 수 있는 건 네 개입니다.
+정할 수 있는 건 다섯 개입니다.
 
 | 옵션 | 기본값 | 효과 |
 |---|---|---|
 | `--device` | `cpu` | `cuda`가 5–10배쯤 빠름 |
 | `--monitor-hz` | `5.0` | PiP를 얼마나 자주 볼지. 낮추면 빠르고 거칠어짐 |
+| `--no-pip` | 꺼짐 | FOV 박스만. 모니터링 패스·콘텐츠 게이트·PiP 갱신을 건너뜀 |
 | `--weights` | `weights/colfov_b8s3.pt` | |
 | `--out` | `outputs/...` | 출력 폴더 |
 
@@ -214,7 +240,7 @@ gate가 OpenCV로 CPU에서 돌기 때문입니다.
 `--monitor-hz`가 속도와 시간 해상도를 맞바꾸는 손잡이입니다. 데이터에 따라 조절하면 됩니다.
 낮추면 빨리 끝나지만 PiP 창을 늦게 잡거나 짧게 뜬 건 놓칠 수 있고, 올리면 짧은 변화까지
 잡는 대신 연산이 그만큼 늘어납니다. FOV 박스는 calibration 단계에서 나오므로 이 값과
-무관합니다.
+무관하고, 같은 이유로 `--no-pip`은 모니터링 패스만 없앨 뿐 FOV 박스는 건드리지 않습니다.
 
 </details>
 

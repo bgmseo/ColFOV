@@ -35,15 +35,20 @@ def main() -> int:
     ap.add_argument("--out", default="outputs/session_example")
     ap.add_argument("--device", default="cpu")
     ap.add_argument("--monitor-hz", type=float, default=5.0, dest="monitor_hz")
+    ap.add_argument("--no-pip", action="store_true", dest="no_pip",
+                    help="FOV boxes only: skip the monitoring pass, the content gate "
+                         "and the PiP coordinate updates")
     args = ap.parse_args()
     args.device = _resolve_device(args.device)
 
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
     model, cfg = load_model(args.weights, device=args.device)
+    pip_enabled = not args.no_pip
     r = analyze_session(args.video, model, cfg, device=args.device,
-                        monitor_hz=args.monitor_hz,
-                        monitor_records_path=out / "monitor_records.jsonl")
+                        monitor_hz=args.monitor_hz, pip_enabled=pip_enabled,
+                        monitor_records_path=(out / "monitor_records.jsonl"
+                                              if pip_enabled else None))
 
     calib = asdict(r.calibration)
     (out / "calibration_summary.json").write_text(
@@ -58,11 +63,15 @@ def main() -> int:
         "final_active_session_pip_box": (list(r.final_active_session_pip_box)
                                          if r.final_active_session_pip_box else None),
         "final_session_pip_reason": r.final_session_pip_reason,
+        "pip_enabled": r.pip_enabled,
         "final_state_caveat": (
             "final_active_session_pip_box is the LAST state of a causal, "
             "time-dependent quantity. It must not be applied retrospectively to "
             "earlier timestamps. Use monitor_records.jsonl for per-observation "
-            "boxes."),
+            "boxes."
+            if r.pip_enabled else
+            "PiP processing was disabled, so the PiP fields report pip_disabled "
+            "rather than a measured absence."),
         "final_pip_epoch": r.final_pip_epoch,
         "n_pip_epoch_rotations": r.n_pip_epoch_rotations,
         "n_pip_lock_events": r.n_pip_lock_events,
@@ -74,7 +83,7 @@ def main() -> int:
         "min_valid_frame_frac": calib["min_valid_frame_frac"],
         "n_frames_in_source": r.n_frames_in_source,
         "n_frames_monitored": r.n_frames_monitored,
-        "monitor_records": "monitor_records.jsonl",
+        "monitor_records": "monitor_records.jsonl" if r.pip_enabled else None,
         "status": "ok" if r.inner_fov_box else f"fov_abstained: {r.fov_reason}",
     }
     (out / "session_result.json").write_text(json.dumps(payload, indent=2),
