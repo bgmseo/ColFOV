@@ -108,8 +108,10 @@ Public datasets are available from their maintainers under their respective term
 - [C3VDv2](https://doi.org/10.1038/s41597-026-07471-1)
 - [CAS-Colon](https://doi.org/10.1038/s41597-025-05588-3)
 
-Hospital data are not redistributed. Manuscript citation details and licensing terms
-will be added when finalized. This package is for research, not clinical decisions.
+Hospital data are not redistributed. This package is for research, not clinical decisions.
+
+**License:** research use only ([LICENSE](LICENSE), [weights](weights/LICENSE.md)).
+Commercial use: bgm.seo@seemedi.com, bgm.seo@snu.ac.kr
 
 ## Tests
 

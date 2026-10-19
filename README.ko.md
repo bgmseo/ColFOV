@@ -104,8 +104,10 @@ PiP 활성 시 `monitor_records.jsonl`의 `active_session_pip_box`를 시점별�
 - [C3VDv2](https://doi.org/10.1038/s41597-026-07471-1)
 - [CAS-Colon](https://doi.org/10.1038/s41597-025-05588-3)
 
-병원 데이터는 재배포하지 않습니다. 논문 인용 정보와 라이선스는 확정 후 추가합니다.
-이 패키지는 연구용이며 임상 판단을 위한 도구가 아닙니다.
+병원 데이터는 재배포하지 않습니다. 이 패키지는 연구용이며 임상 판단을 위한 도구가 아닙니다.
+
+**라이선스:** 연구 목적으로만 사용 가능 ([LICENSE](LICENSE), [가중치](weights/LICENSE.md)).
+상업적 이용 문의: bgm.seo@seemedi.com, bgm.seo@snu.ac.kr
 
 ## 테스트
 

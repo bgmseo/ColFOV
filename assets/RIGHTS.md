@@ -1,8 +1,8 @@
 # Figure assets — rights
 
 The figures in this directory are reproduced solely in connection with the
-accompanying publication, for scientific transparency. Repository-wide licensing terms
-are not settled yet and will be added when the manuscript is submitted.
+accompanying publication, for scientific transparency. The repository licence
+(`../LICENSE`) does not cover these figures.
 
 - No permission is granted to extract, reuse, redistribute or modify these figures or
   any panel within them.
