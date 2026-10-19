@@ -1,16 +1,31 @@
 cff-version: 1.2.0
-message: "If you use this software or the released model weights, please cite the accompanying paper once its citation is available."
-title: "ColFOV: semantic-guided four-class endoscopic frame segmentation with derived FOV and session PiP geometry"
+message: "If you use this software or the model weights, please cite it as below."
+title: "ColFOV: Semantic-guided field-of-view adaptation for colonoscopy AI"
 abstract: >-
-  ColFOV segments endoscopic frames into four classes (background UI, valid FOV tissue,
-  black corner, popup overlay) and derives three geometry products from those masks: an
-  inner-FOV box, a full-FOV box, and a conditional, causal session-level
-  picture-in-picture box. The network outputs only the segmentation mask; all bounding
-  boxes are derived geometry and abstain fail-closed when their evidence conditions are
-  not met.
+  ColFOV segments colonoscopy frames into four classes (background or recorder
+  interface, tissue field, optical corner, picture-in-picture) and combines the
+  predictions of 24 evenly spaced frames that share one capture layout into stable
+  full-FOV and inner-FOV bounding boxes, with an optional, causal session-level
+  picture-in-picture box. The network outputs only the segmentation mask; all
+  bounding boxes are derived geometry and are withheld, with a stated reason, when
+  their evidence conditions are not met.
 type: software
-version: "0.1.0"
+version: "1.0.0"
+date-released: "2026-10-19"
+commit: "95d88579c96638e806ce1ececc0cbd30e93f946d"
+doi: "10.5281/zenodo.23462001"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.23462001"
+    description: "Zenodo archive of ColFOV v1.0.0"
+  - type: doi
+    value: "10.5281/zenodo.23462000"
+    description: "Zenodo concept DOI (all versions)"
 repository-code: "https://github.com/bgmseo/ColFOV"
+url: "https://github.com/bgmseo/ColFOV"
+license:
+  - PolyForm-Noncommercial-1.0.0
+  - CC-BY-NC-4.0
 authors:
   - family-names: "Seo"
     given-names: "Bo Geum"
@@ -22,5 +37,4 @@ keywords:
   - semantic segmentation
   - field of view
   - picture-in-picture
-# The accompanying manuscript is not yet submitted; citation details will be added
-# on publication.
+  - image preprocessing

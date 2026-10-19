@@ -4,8 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "colfov"
-version = "0.1.0"
+version = "1.0.0"
 description = "Semantic-guided four-class segmentation of endoscopic frames, with derived inner-FOV, full-FOV and causal session PiP geometry"
+license = {text = "PolyForm-Noncommercial-1.0.0"}
 requires-python = ">=3.10"
 dependencies = [
   "torch>=2.0",
